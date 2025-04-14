@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Porsche Test Drive Booking</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @font-face {
+        font-family: fonth;
+        src: url(Font/TT\ Octosquares\ Trial\ Black.ttf);
+      }
+      body {
+        font-family: fonth;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        overflow-x: hidden;
+      }
+      .container {
+        padding: 20px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+        color: #fff;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+      .logo-container img {
+        width: 50px;
+      }
+      .navbar {
+        display: flex;
+        margin-left: 510px;
+        font-size: 30px;
+      }
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .navbar li {
+        margin-right: 20px;
+      }
+      .navbar a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .navbar a:hover {
+        color: #ffd700;
+      }
+      .test-drive {
+        background-color: #fff;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      .test-drive .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .test-drive label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .test-drive input,
+      .test-drive select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+      }
+      .test-drive input:focus,
+      .test-drive select:focus {
+        outline: none;
+        border-color: #ffd700;
+      }
+      .test-drive .car img {
+        max-width: 100%;
+        height: auto;
+      }
+      .btn {
+        background-color: black;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #ffd700;
+      }
+      .popup {
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 10px 20px;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        border-radius: 5px;
+        display: none;
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="logo-container">
+          <a href="index.html">
+            <img id="logo" src="images/logo.png" alt="logo" />
+          </a>
+          <nav class="navbar">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="models.html">Models</a></li>
+              <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <h2 id="exph">Book Your Porsche Test Drive</h2>
+      <section class="test-drive">
+        <div class="content">
+          <form action="testdrive.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required />
+
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" name="date" required />
+
+            <label for="car_model">Preferred Model:</label>
+            <select
+              id="car_model"
+              name="car_model"
+              onchange="updateCarImage()"
+              required
+            >
+              <option value="911">911</option>
+              <option value="Cayman">Cayman</option>
+              <option value="Panamera">Panamera</option>
+              <option value="Taycan">Taycan</option>
+              <option value="Macan">Macan</option>
+              <option value="Coupe">Coupe</option>
+            </select>
+
+            <label for="location">Location for Test Drive:</label>
+            <select
+              id="location"
+              name="location"
+              onchange="toggleShowroomLocation()"
+            >
+              <option value="home">Home</option>
+              <option value="showroom">Showroom</option>
+            </select>
+
+            <div id="showroomLocation" style="display: none">
+              <label for="showroom">Showroom Location:</label>
+              <select id="showroom" name="showroom">
+                <option value="Rajajinagar">Rajajinagar Showroom</option>
+                <option value="Yeswanthapur">Yeswanthapur Showroom</option>
+                <option value="Kengeri">Kengeri Showroom</option>
+                <option value="Whitefield">Whitefield Showroom</option>
+              </select>
+            </div>
+
+            <input type="submit" class="btn" value="Book Test Drive" />
+          </form>
+
+          <div class="car">
+            <img src="Images/car1.png" alt="car" id="selectedCar" style="width: 1500px; height: auto;"/>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="popup" class="popup">Test drive booked!</div>
+
+    <script>
+      function toggleShowroomLocation() {
+        var locationDropdown = document.getElementById("location");
+        var showroomLocation = document.getElementById("showroomLocation");
+
+        if (locationDropdown.value === "showroom") {
+          showroomLocation.style.display = "block";
+        } else {
+          showroomLocation.style.display = "none";
+        }
+      }
+    </script>
+    <script>
+      function updateCarImage() {
+        var carModelSelect = document.getElementById('car_model');
+        var selectedCarImage = document.getElementById('selectedCar');
+  
+        var selectedModel = carModelSelect.value;
+        var imagePath = '';
+        switch (selectedModel) {
+          case '911':
+            imagePath = 'Images/car1.png';
+            break;
+          case 'Cayman':
+            imagePath = 'Images/car2.png';
+            break;
+          case 'Panamera':
+            imagePath = 'Images/car3.png';
+            break;
+          case 'Taycan':
+            imagePath = 'Images/car4.png';
+            break;
+          case 'Macan':
+            imagePath = 'Images/car5.png';
+            break;
+          case 'Coupe':
+            imagePath = 'Images/car6.png';
+            break;
+          default:
+            imagePath = 'Images/car7.png'; 
+        }
+        selectedCarImage.src = imagePath;
+      }
+    </script>
+    <script src="JS/exp.js"></script>
+  </body>
+</html>

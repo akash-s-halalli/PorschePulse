@@ -1,0 +1,111 @@
+@font-face {
+  font-family: fonth;
+  src: url(Font/TT\ Octosquares\ Trial\ Black.ttf);
+}
+
+body {
+  font-family: fonth;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+.container {
+  padding: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.logo-container img {
+  width: 50px;
+}
+.navbar {
+  display: flex;
+  margin-left: 510px;
+  font-size: 30px;
+}
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navbar li {
+  margin-right: 20px;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.navbar a:hover {
+  color: #ffd700;
+}
+.test-drive {
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.test-drive .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.test-drive label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.test-drive input,
+.test-drive select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+.test-drive input:focus,
+.test-drive select:focus {
+  outline: none;
+  border-color: #ffd700;
+}
+.test-drive .car img {
+  max-width: 100%;
+  height: auto;
+}
+.btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #ffd700;
+}
+
+.popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  display: none;
+  z-index: 999;
+}
